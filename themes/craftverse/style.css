@@ -1,0 +1,108 @@
+/*
+	Theme Name: Craftverse
+	Version: v1.0
+	Author:	Bajunovic
+*/
+
+/* Wordpress Widget Related CSS Code */
+#wp-calendar {
+	/*border: 1px solid #ddd;*/
+	empty-cells: show;
+	font-size: 0.9em;
+	margin: 0;
+	width: 90%;
+}
+
+#wp-calendar #next a {
+	padding-right: 10px;
+	text-align: right;
+}
+
+#wp-calendar #prev a {
+	padding-left: 10px;
+	text-align: left;
+}
+
+#wp-calendar a {
+	display: block;
+	text-decoration: none;
+	font-weight:bold;
+}
+
+#wp-calendar a:hover {
+/*	background: #e0e6e0; */
+background:white;
+	color: #333;
+}
+
+#wp-calendar caption {
+	color: #14568A;
+	text-align: center;
+	font-weight:bold;
+	font-size:1.2em;
+}
+
+#wp-calendar td {
+/*	color: #ccc;*/
+	font: normal 12px 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+	letter-spacing: normal;
+	padding: 2px 0;
+	text-align: center;
+}
+
+#wp-calendar td.pad:hover {
+	background: #fff;
+}
+
+#wp-calendar td:hover, #wp-calendar #today {
+	background: #eee;
+	color:#003366;
+}
+
+#wp-calendar th {
+	font-style: normal;
+	text-transform: capitalize;
+}
+
+img.wp-smiley {
+	display: inline;
+}
+
+/* Captions & aligment */
+.aligncenter,
+div.aligncenter {
+	display: block;
+	margin: 0 auto;
+}
+
+.alignleft {
+	float: left;
+}
+
+.alignright {
+	float: right;
+}
+
+.wp-caption {
+	border: 1px solid #ddd;
+	text-align: center;
+	background-color: #f3f3f3;
+	padding-top: 4px;
+	margin: 10px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.wp-caption img {
+	margin: 0;
+	padding: 0;
+	border: 0 none;
+}
+
+.wp-caption p.wp-caption-text {
+	font-size: 11px;
+	line-height: 17px;
+	padding: 0 4px 5px;
+	margin: 0;
+}

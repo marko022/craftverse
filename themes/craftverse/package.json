@@ -1,0 +1,32 @@
+{
+  "name": "gulp-build",
+  "version": "1.0.0",
+  "description": "A modern Gulp 4 build setup for Sass, JS, and linting",
+  "main": "index.js",
+  "author": "Your Name",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.24.0",
+    "@babel/preset-env": "^7.24.1",
+    "babel-polyfill": "^6.26.0",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-cached": "^1.1.1",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-eslint": "^6.0.0",
+    "gulp-minify": "^3.1.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-uglify": "^3.0.2"
+  },
+  "dependencies": {
+    "sass": "^1.74.0", 
+    "swiper": "^11.1.4"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

@@ -1,0 +1,29 @@
+// Font
+// ----
+
+$font-base: 20px;
+$line-base: 32px;
+
+// Font Family
+// -----------
+$font-family: "Roboto", serif;
+
+// Colors
+// ------
+$white: #ffffff;
+$black: #000000;
+$border-color: #E0E0E0;
+$grey: #686868;
+$dark-blue: #0f1922;
+$text-color: $black;
+$error: #ff1313;
+
+// Breakpoints
+// -----------
+$bp-laptop: 1280px;
+$bp-tablet: 991px;
+$bp-mobile: 767px;
+
+// Defaults
+// --------
+$base-width: 1410px;

@@ -1,0 +1,17 @@
+%clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+%reset-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+%reset-space {
+  padding: 0;
+  margin: 0;
+}
