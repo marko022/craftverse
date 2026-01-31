@@ -21,4 +21,37 @@
     acf_add_options_page("Theme Settings");
   }
 
+	// Add CPT Called "Projects"
+	function create_post_type_projects() {
+		register_post_type( 'projects',
+			array(
+				'labels' => array(
+					'name' => __( 'Projects' ),
+					'singular_name' => __( 'Project' )
+				),
+				'public' => true,
+				'has_archive' => true,
+				'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ),
+				'rewrite' => array( 'slug' => 'projects' ),
+				'taxonomies' => array('brands'),
+				'menu_icon' => 'dashicons-portfolio',
+			)
+		);
+	}
+	add_action( 'init', 'create_post_type_projects' );
+
+	// Custom Taxonomy for Projects Called "Brands"
+	function create_taxonomy_brands() {
+		register_taxonomy(
+			'brands',
+			'projects',
+			array(
+				'label' => __( 'Brands' ),
+				'rewrite' => array( 'slug' => 'brands' ),
+				'hierarchical' => true,
+			)
+		);
+	}
+	add_action( 'init', 'create_taxonomy_brands' );
+	
 ?>

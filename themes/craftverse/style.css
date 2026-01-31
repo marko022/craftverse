@@ -106,3 +106,25 @@ div.aligncenter {
 	padding: 0 4px 5px;
 	margin: 0;
 }
+
+/* Fade-in and Slide-up Animation */
+@keyframes fadeInSlideUp {
+	from {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.fade-in {
+	opacity: 0;
+	transform: translateY(30px);
+	transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-active {
+	animation: fadeInSlideUp 0.6s ease-out forwards;
+}
