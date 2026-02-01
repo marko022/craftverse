@@ -31,11 +31,35 @@
 
 
 <body class="body <?php if(is_front_page()) {?>front-page<?php } ?>" >
+
+  <?php
+   $logo = get_field('logo', 'option');
+  ?>
   
   <header class="header">
     <div class="container-fluid">
       <div class="row">
       
+        <div class="col-12">
+          <div class="header__wrap">
+            <div class="header__logo">
+              <a href="<?php echo esc_url(home_url('/')); ?>">
+                <img src="<?php echo esc_url($logo['url']); ?>" 
+                     alt="<?php echo esc_attr($logo['alt'] ?: 'Site Logo'); ?>" 
+                     class="header__logo-image">                     
+              </a>
+            </div>
+
+            <div class="header__nav">
+              <?php
+                wp_nav_menu(array(
+                  'theme_location' => 'primary',
+                  'menu_class'     => 'header__menu',
+                  'container'      => false,
+                ));
+              ?>
+          </div>
+        </div>
          
       </div>
     </div>

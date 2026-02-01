@@ -10,6 +10,12 @@ jQuery(document).ready(function() {
   $(window).on('scroll', function() {
     checkFadeInElements();
     checkLatestProjectsItemsFade();
+
+    if ($(window).scrollTop() > 10) {
+      $('header').addClass('scrolled');
+    } else {
+      $('header').removeClass('scrolled');
+    }
   });
 
   $(window).on('load resize', function() {
