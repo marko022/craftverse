@@ -1,64 +1,98 @@
 jQuery(document).ready(function() {
-  // Initialize fade-in animation with a small delay to ensure DOM is ready
   setTimeout(function() {
     initializeFadeInAnimation();
   }, 100);
-  
-  // Initialize Slick slider for latest projects
+
   initializeLatestProjectsSlider();
-  
-  // Re-check on scroll
+  // Latest projects staggered fade-in
+  initializeLatestProjectsItemsFade();
+
   $(window).on('scroll', function() {
     checkFadeInElements();
+    checkLatestProjectsItemsFade();
   });
-  
-  // Also check on window load and resize
+
   $(window).on('load resize', function() {
     checkFadeInElements();
-    initializeLatestProjectsSlider(); // Re-initialize slider on resize
+    checkLatestProjectsItemsFade();
+    initializeLatestProjectsSlider();
   });
 });
 
-/**
- * Initialize fade-in and slide-up animation for elements with .fade-in class
- */
+// Generic fade-in
 function initializeFadeInAnimation() {
   checkFadeInElements();
 }
 
-/**
- * Check which .fade-in elements are in view and animate them
- */
+// Latest projects staggered fade-in
+function initializeLatestProjectsItemsFade() {
+  const $items = $('.latest-projects__item');
+
+  if (!$items.length) {
+    return;
+  }
+
+  $items.addClass('fade-in');
+}
+
 function checkFadeInElements() {
   $('.fade-in').each(function() {
-    // Skip if already animated
+    if ($(this).hasClass('latest-projects__item')) {
+      return;
+    }
+
     if ($(this).hasClass('fade-in-active')) {
       return;
     }
-    
-    // Check if element is in viewport
+
     if (isElementInView($(this))) {
       $(this).addClass('fade-in-active');
     }
   });
 }
 
-/**
- * Check if an element is in the viewport
- */
+function checkLatestProjectsItemsFade() {
+  const $items = $('.latest-projects__item');
+
+  if (!$items.length) {
+    return;
+  }
+
+  if ($items.first().hasClass('fade-in-active')) {
+    return;
+  }
+
+  const anyInView = $items.toArray().some(function(item) {
+    const $item = $(item);
+    const elementTop = $item.offset().top;
+    const elementHeight = $item.outerHeight();
+    const elementMiddle = elementTop + (elementHeight / 2);
+    const viewportTop = $(window).scrollTop();
+    const viewportBottom = viewportTop + $(window).height();
+    return elementMiddle > viewportTop && elementMiddle < viewportBottom;
+  });
+
+  if (!anyInView) {
+    return;
+  }
+
+  $items.each(function(index) {
+    const $item = $(this);
+    setTimeout(function() {
+      $item.addClass('fade-in-active');
+    }, index * 150);
+  });
+}
+
 function isElementInView($element) {
   const elementTop = $element.offset().top;
   const elementBottom = elementTop + $element.outerHeight();
   const viewportTop = $(window).scrollTop();
   const viewportBottom = viewportTop + $(window).height();
   
-  // Element is in view if it's within 50px from bottom of viewport
   return elementBottom > (viewportTop + 50) && elementTop < viewportBottom;
 }
 
-/**
- * Initialize Slick slider for latest projects (mobile only - under 600px)
- */
 function initializeLatestProjectsSlider() {
   const $slider = $('.latest-projects__list');
   
@@ -68,11 +102,9 @@ function initializeLatestProjectsSlider() {
   
   const windowWidth = $(window).width();
   
-  // Check if Slick is already initialized
   const isSlickActive = $slider.hasClass('slick-initialized');
   
   if (windowWidth < 600) {
-    // Initialize Slick for mobile
     if (!isSlickActive) {
       $slider.slick({
         slidesToShow: 1,
@@ -83,7 +115,6 @@ function initializeLatestProjectsSlider() {
       });
     }
   } else {
-    // Destroy Slick for desktop
     if (isSlickActive) {
       $slider.slick('unslick');
     }

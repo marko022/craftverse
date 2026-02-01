@@ -1,9 +1,10 @@
 <?php
-// Query last 4 'projects' custom post type
 $latest_projects = new WP_Query([
   'post_type'      => 'projects',
   'posts_per_page' => 4,
   'post_status'    => 'publish',
+  'orderby'        => 'modified',
+  'order'          => 'DESC',
 ]);
 ?>
 
@@ -12,7 +13,10 @@ $latest_projects = new WP_Query([
     <div class="row justify-content-center">
       <div class="col-12">
         <div class="latest-projects__wrap">
-          <h2 class="latest-projects__title">Latest Projects</h2>
+          <div class="latest-projects__title-wrap">
+            <h2 class="latest-projects__title">Latest Projects</h2>
+            <a href="<?php echo esc_url(get_post_type_archive_link('projects')); ?>" class="btn">View All Projects</a>
+          </div>
           <div class="latest-projects__list">
             <?php if ($latest_projects->have_posts()): ?>
               <?php while ($latest_projects->have_posts()): $latest_projects->the_post(); ?>
