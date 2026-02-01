@@ -14,12 +14,22 @@
     <?php if (get_row_layout() == 'main_banner') : ?>
       <?php include get_theme_file_path('/components/main-banner.php'); ?>
     <?php endif; ?>
+
+    <!-- Case: Latest Projects -->
+    <?php if (get_row_layout() == 'latest_projects') : ?>
+      <?php include get_theme_file_path('/components/latest-projects.php'); ?>
+    <?php endif; ?>
+
+    <!-- Case: Process -->
+    <?php if (get_row_layout() == 'process') : ?>
+      <?php include get_theme_file_path('/components/process.php'); ?>
+    <?php endif; ?>
     
 
     <!-- End loop. -->
     <?php endwhile; ?>
     <?php endif; ?>
-    <?php include get_theme_file_path('/components/latest-projects.php'); ?>
+    
   
 </main>
 
